@@ -1,7 +1,7 @@
 <?php die(); ?>
 
-Kohana Smarty Module
-====================
+Kohana Smarty Module v3.1.2
+===========================
 
 Smarty template engine implementation for the Kohana PHP framework
 
