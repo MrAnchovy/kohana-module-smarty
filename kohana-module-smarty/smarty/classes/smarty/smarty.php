@@ -20,11 +20,6 @@ public static function get_smarty() {
   $smarty = new Smarty;
 
   // deal with initial config
-  $smarty->compile_dir = $config->compile_dir;
-  // check we can write to our directory
-  if ( !is_writeable($smarty->compile_dir) ) {
-    $smarty->create_dir($smarty->compile_dir, 'Smarty compiled template');
-  }
   $smarty->php_handling = constant($config->php_handling);
 
   // deal with main config
@@ -32,10 +27,20 @@ public static function get_smarty() {
     $smarty->$key = $value;
   }
 
+  // check we can write to the compiled templates directory
+  if ( !is_writeable($smarty->compile_dir) ) {
+    self::create_dir($smarty->compile_dir, 'Smarty compiled template');
+  }
+
+  // if smarty caching is enabled, check we can write to the cache directory
+  if ( $smarty->caching && !is_writeable($smarty->cache_dir) ) {
+    self::create_dir($smarty->cache_dir, 'Smarty cache');
+  }
+
   return $smarty;
 }
 
-public function create_dir($path, $name='') {
+private static function create_dir($path, $name='') {
   if ( file_exists($path) ) {
     if ( is_dir($path) ) {
       throw new Kohana_Exception('Could not write to :name directory',

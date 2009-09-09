@@ -9,7 +9,6 @@ return array (
   'template_extension'=> 'tpl',
 
   // some smarty settings need to be dealt with separately...
-  'compile_dir'     => Kohana::$cache_dir . '/smarty_compiled',
 
   // this is perhaps more useful than the default _PASSTHRU or _REMOVE or _ALLOW
   // but needs special handling because the constants are not defined yet
@@ -18,20 +17,33 @@ return array (
   // ... but most can be overridden in this automagically handled array
   'smarty_config'   => array(
 
-    // useful when developing, override to false in your application's config for a
-    // small speed increase
+    // we can use Kohana's cache directory for our compiled templates
+    'compile_dir'     => Kohana::$cache_dir . '/smarty_compiled',
+    // ... and the smarty cache (only used if it is enabled)
+    'cache_dir'       => Kohana::$cache_dir . '/smarty_compiled',
+
+    // TODO think about some theme overriding. At the moment the Kohana interface
+    // provides an absolute path to template files, but the path here needs to be
+    // set for the smarty {include} function
+    'template_dir'    =>  APPPATH . 'views',
+
+    // TODO need to create some useful Kohana plugins. Investigate whether
+    // pre-registering gives a meaningful speed gain.
+    'plugins_dir'     =>  array(
+      APPPATH . 'smarty_plugins',
+      MODPATH . '/smarty/smarty_plugins',
+      'plugins',
+    ),
+
+    // If you want to use smarty config files, put them in this place
+    'config_dir'      =>  APPPATH . 'smarty_config',
+
+    // useful when developing, override to false in your application's config
+    // for a small speed increase
     'compile_check'   => true,
 
     // use the current error reporting level rather than Smarty's none
     'error_reporting' => error_reporting(),
-
-    // TODO think about some theme overriding. At the moment the Kohana
-    // interface provides an absolute path so this doesn't get used anyway
-    // except for the debug.tpl called within smarty
-    'template_dir'    =>  '',
-
-    // TODO need to register some useful Kohana plugins
-    'plugins_dir'     =>  array('plugins'),
 
     // Is the debugging console useful in a Kohana environment?
     'debugging'       =>  false,

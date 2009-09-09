@@ -1,11 +1,13 @@
 <?php die(); ?>
 
 Kohana Smarty Module
-  - Smarty template engine implementation for the Kohana PHP framework
+====================
+
+Smarty template engine implementation for the Kohana PHP framework
 
 http://wiki.github.com/MrAnchovy/kohana-module-smarty
 
-Copyright 2009 Mr Anchovy mr.anchovy@mranchovy.com
+Copyright 2009 Mr Anchovy <mr.anchovy@mranchovy.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
