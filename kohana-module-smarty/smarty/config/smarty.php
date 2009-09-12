@@ -5,7 +5,7 @@
  */
 
 return array (
-  'smarty_class_file' => MODPATH . '/smarty/vendor/smarty/Smarty.class.php',
+  'smarty_class_file' => MODPATH.'smarty/vendor/smarty/Smarty.class.php',
   'template_extension'=> 'tpl',
 
   // some smarty settings need to be dealt with separately...
@@ -25,18 +25,21 @@ return array (
     // TODO think about some theme overriding. At the moment the Kohana interface
     // provides an absolute path to template files, but the path here needs to be
     // set for the smarty {include} function
-    'template_dir'    =>  APPPATH . 'views',
+    'template_dir'    =>  array(
+      APPPATH.'views',
+      MODPATH.'smarty/views',
+    ),
 
     // TODO need to create some useful Kohana plugins. Investigate whether
     // pre-registering gives a meaningful speed gain.
     'plugins_dir'     =>  array(
-      APPPATH . 'smarty_plugins',
-      MODPATH . '/smarty/smarty_plugins',
+      APPPATH.'smarty_plugins',
+      MODPATH.'smarty/smarty_plugins',
       'plugins',
     ),
 
     // If you want to use smarty config files, put them in this place
-    'config_dir'      =>  APPPATH . 'smarty_config',
+    'config_dir'      =>  APPPATH.'smarty_config',
 
     // useful when developing, override to false in your application's config
     // for a small speed increase
