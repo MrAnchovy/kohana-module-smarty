@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>{$title}</title>
+<title>{$title|default:'Welcome to Kohana with Smarty'}</title>
 
 <style type="text/css">{literal}
 body { font-family: verdana, sans-serif; width: 90%; margin: auto; line-height: 1.4em; }
