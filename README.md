@@ -6,7 +6,7 @@ provides a framework for other rendering plugins and provides a simple framework
 for extensions of the Kohana Template Controller class to return more than one
 type of output which is particularly useful in AJAX applications.
 
-Version 3.2.1 for Kohana 3
+Version 3.2.2 for Kohana 3
 
 ### Quick Start
 
@@ -63,7 +63,7 @@ Support for Smarty and its standard plugins is of course on the
 ### Copyright
 
 The Smarty module is copyright 2009 Mr Anchovy
-  <http://www.mranchovy.com> email <mr.anchovy@mranchovy.com>
+  <http://www.mranchovy.com> email <mr.anchovy@mranchovy.com>  
 Kohana is copyright 2008-2009 Kohana Team <http://kohanaphp.com/license.html>  
 Smarty is copyright  copyright 2001-2005 New Digital Group, Inc.
 
