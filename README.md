@@ -1,11 +1,14 @@
-# Kohana Smarty Module
+## Smarty Module for Kohana
 
 This is a module for the [Kohana PHP framework](http://kohanaphp.com/) that
-integrates the Smarty Template Engine. It also provides a framework for other
-rendering plugins and a means for Kohana Template Controllers to return more
-than one type of output.
+integrates the [Smarty Template Engine](http://www.smarty.net/). It also
+provides a framework for other rendering plugins and provides a simple framework
+for extensions of the Kohana Template Controller class to return more than one
+type of output which is particularly useful in AJAX applications.
 
-# Quick Start
+Version 3.2.1 for Kohana 3
+
+### Quick Start
 
 * To use Smarty for a view you need to create a Smarty template
   `template_name.tpl` in your application's views directory.
@@ -15,7 +18,7 @@ than one type of output.
   Smarty template for your page layout too - just set
   `public $template = 'smarty:layout_template_name';` in your controller class.
 
-# How does this magic work?
+### How does this magic work?
 
 The Smarty module creates a `View` class that extends `Kohana_View` to provide
 the parsing of the `smarty:` template prefix. On rendering, the extended `View`
@@ -49,7 +52,7 @@ More rendering packages are on their way - code contributions gratefully receive
 * Atom
 * The [Dwoo](http://dwoo.org) template engine
 
-# More information
+### More information
 
 Documentation and support for this module can be found on
 [Github](http://wiki.github.com/MrAnchovy/kohana-module-smarty]Information).
@@ -57,14 +60,15 @@ Support for Smarty and its standard plugins is of course on the
 [Smarty](http://www.smarty.net) site.
 
 
-# Copyright
+### Copyright
 
 The Smarty module is copyright 2009 Mr Anchovy
   <http://www.mranchovy.com> email <mr.anchovy@mranchovy.com>
-Smarty is copyright  
-Kohana is copyright  
+Kohana is copyright 2008-2009 Kohana Team <http://kohanaphp.com/license.html>  
+Smarty is copyright  copyright 2001-2005 New Digital Group, Inc.
 
-The **Smarty module** is free software: you can redistribute it and/or modify
+The Smarty module for Kohana is free software:
+you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
@@ -76,4 +80,3 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>
-
