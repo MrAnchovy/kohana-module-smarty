@@ -5,8 +5,8 @@
  */
 
 return array (
-  'smarty_class_file' => MODPATH.'smarty/vendor/smarty/Smarty.class.php',
-  'template_extension'=> 'tpl',
+
+  'smarty_class_file' => MODPATH.'smarty/thirdparty/smarty/Smarty.class.php',
 
   // some smarty settings need to be dealt with separately...
 
@@ -71,4 +71,5 @@ return array (
     'default_modifiers' => array(),
 
   ),
+
 );
