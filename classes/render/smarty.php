@@ -7,9 +7,12 @@ public static $smarty;
 public static function render(array $vars=array(), array $globals=array(), $file=false, array $options=array()) {
   $smarty = self::get_smarty();
   $token = Kohana::$profiling ? Profiler::start('smarty', 'rendering ' . basename($file)) : false;
-  $smarty->_tpl_vars = $vars + $globals;
 
+  // save _tpl_vars in case we have a render within a render
+  // - can be caused by variables which are objects with __toString methods
   $old_tpl_vars = $smarty->_tpl_vars;
+
+  $smarty->_tpl_vars = $vars + $globals;
 
   // debugging pop-up code removed - too much pain for too little gain
   $result = $smarty->fetch($file);
