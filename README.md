@@ -6,7 +6,7 @@ provides a framework for other rendering plugins and provides a simple framework
 for extensions of the Kohana Template Controller class to return more than one
 type of output which is particularly useful in AJAX applications.
 
-Development Version (post 3.2.2) for Kohana 3
+v 3.2.3 for Kohana 3
 
 ### Quick Start
 
