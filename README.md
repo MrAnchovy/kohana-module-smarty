@@ -24,8 +24,9 @@ The Smarty module creates a `View` class that extends `Kohana_View` to provide
 the parsing of the `smarty:` template prefix. On rendering, the extended `View`
 object uses a static class `Render_Smarty` to pass the template variables (and
 the globals) to a singleton instance of the unmodified third party `Smarty`
-object (so you can use Smarty methods or update the third party Smarty package
-at will).`
+object (you can access this object with `$smarty = Render_Smarty::get_smarty()`
+to quickly convert existing code that uses `$smarty->assign()` and
+`$smarty->fetch()`).
 
 Because the Smarty object is not instantiated until rendering, there is very
 little overhead in enabling this module if you only want to use Smarty views
