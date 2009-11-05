@@ -11,12 +11,22 @@ class Controller_Smarty extends Controller_Template {
 // See http://docs.kohanaphp.com/installation/deployment for more details.
 const ALLOW_PRODUCTION = FALSE;
 
-// Set the name of the template to use
+// Set the name of the page layout template to use
 public $template = 'smarty:smarty_demo_page';
 
+/**
+ * Default action - demonstrate Smarty in action
+ */
 public function action_index() {
 
   $view = View::factory('smarty:smarty_demo');
+
+  // set variables for the 'features' section
+  $view->myvar = 'This is a variable';
+  $view->username = 'My Name';
+  $view->set_global('myglobalvar', 'This is a global variable');
+
+  // set variables for the 'demonstration' section
   $view->controller = file_get_contents(__FILE__);
   $view->wrapper = file_get_contents(dirname(__FILE__) . '../../../views/smarty_demo_page.tpl');
 
@@ -25,7 +35,9 @@ public function action_index() {
 
 }
 
-
+/**
+ * Demonstrate a renderer for the text/plain MIME type.
+ */
 public function action_demo_text() {
 
   $this->template->content = file_get_contents(__FILE__);
@@ -33,6 +45,9 @@ public function action_demo_text() {
   $this->template->render();
 }
 
+/**
+ * Demonstrate a renderer for a JSON object.
+ */
 public function action_demo_json() {
 
   // we can either put the data explicitly in a variable called _data, or do this
