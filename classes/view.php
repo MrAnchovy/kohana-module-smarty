@@ -1,18 +1,31 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
- * Acts as an object wrapper for HTML pages with embedded PHP, called "views".
- * Variables can be assigned with the view object and referenced locally within
- * the view.
+ * Smarty module for Kohana 3
+ * - <a href="http://wiki.github.com/MrAnchovy/kohana-module-smarty">homepage</a>
  *
- * @package    Kohana
- * @author     Kohana Team
- * @copyright  (c) 2008-2009 Kohana Team
+ * Override the Kohana View class to provide template name parsing and independent
+ * rendering.
+ *
+ * @package    Smarty
+ * @author     Mr Anchovy (mr dot anchovy at mranchovy dot com)
+ * @copyright  (c) 2009 MrAnchovy (http://www.mranchovy.com)
  * @license    http://kohanaphp.com/license.html
  */
 class View extends Kohana_View {
 
+/**
+ * @var  string  Name of rendering class to use
+ */
 protected $_renderer;
-protected $_default_renderer = 'parent'; // note cannot use Kohana_View->render because it is not a static method;
+
+/**
+ * @var  string  Name of default renderer
+ */
+protected $_default_renderer = 'parent';
+
+/**
+ * @var  string  Configuration
+ */
 protected $_config = array();
 
 public function __construct($file = null, array $data = null) {
@@ -26,20 +39,9 @@ public function __construct($file = null, array $data = null) {
 }
 
 /**
- * Returns a new View object.
+ * Parse a template name and set the renderer and filename.
  *
- * @param   string  view filename
- * @param   array   array of values
- * @return  View
- */
-public static function factory($file = null, array $data = null) {
-  return new View($file, $data);
-}
-
-/**
- * Sets the view filename.
- *
- * @throws  View_Exception
+ * @throws  View_Exception (parent)
  * @param   string  filename
  * @return  View
  */
@@ -62,7 +64,7 @@ public function set_filename($file) {
     return parent::set_filename($file);
   }
 
-  // TODO allow the renderer to set the file
+  // REVISIT we should implement this in the renderer
   $this->_set_filename($file);
 
 }
@@ -115,19 +117,6 @@ public function render($file = null, array $options=array()) {
   }
   $method = 'Render_'.ucfirst($this->_renderer).'::render';
   return call_user_func($method, $this->_data, View::$_global_data, $this->_file, $options);
-}
-
-public function collapse_vars($name, array $list=array(), $include=false, $delete=true) {
-  $new = array();
-  foreach ( $this->_data as $var=>$val ) {
-    if ( in_array($var, $list) ? $include : !$include ) {
-      $new[$var] = $val;
-    }
-  }
-  if ( $delete ) {
-    $this->_data = array();
-  }
-  $this->$name = $new;
 }
 
 } // End View
