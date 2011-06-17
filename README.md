@@ -1,3 +1,9 @@
+## Use the Smarty3 module instead
+
+This module has now been deprecated in favour of a ground-up rewrite to suit the
+very different workings of Smarty 3. Check out the
+[Smarty Module](https://github.com/MrAnchovy/Kohana_Smarty3) now!
+
 ## Smarty Module for Kohana
 
 This is a module for the [Kohana PHP framework](http://kohanaphp.com/) that
